@@ -11,7 +11,7 @@ import { UserformValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { FormFieldType } from "./PatientForm";
 
-import { Agents, Doctors, GenderOptions } from "@/constants";
+import { Agents, GenderOptions } from "@/constants";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { SelectItem } from "../ui/select";
