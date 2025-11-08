@@ -43,7 +43,6 @@ export function RegisterForm({ user }: { user: User }) {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof CustomerFormValidation>) {
-    console.log("Form submitted values:", values);
     setIsLoading(true);
 
     try {
