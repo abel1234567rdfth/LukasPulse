@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       const buffer = Buffer.from(await identificationFile.arrayBuffer());
       const inputFile = InputFile.fromBuffer(
         buffer,
-        formData.get("fileName") as string
+        (identificationFile as File).name || "unknown_file"
       );
 
       const file = await storage.createFile(
@@ -81,3 +81,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
+// storage file name null
+// 2:32:44
