@@ -18,20 +18,25 @@ import Image from "next/image";
 import { Agents } from "@/constants";
 import { SelectItem } from "../ui/select";
 import { cn } from "@/lib/utils";
+import { Appointment } from "@/types/appwrite.types";
 
 export function AppointmentForm({
   userId,
   customerId,
   type,
+  appointment,
+  setOpen,
 }: {
   userId: string;
   customerId: string;
   type: "create" | "cancel" | "schedule";
+  appointment: Appointment;
+  setOpen: (open: boolean) => void;
 }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
+  //   form structure.
 
   const AppointmentFormValidation = getAppointmentSchema(type);
 
@@ -42,18 +47,19 @@ export function AppointmentForm({
       AppointmentFormValidation
     ) as Resolver<AppointmentFormType>,
     defaultValues: {
-      primaryAgent: "",
-      schedule: new Date(),
-      reason: "",
-      note: "",
-      cancellationReason: "",
+      primaryAgent: appointment ? appointment.primaryAgent : "",
+      schedule: appointment
+        ? new Date(appointment.schedule)
+        : new Date(Date.now()),
+      reason: appointment ? appointment.reason : "",
+      note: appointment ? appointment.note : "",
+      cancellationReason: (appointment && appointment.cancellationReason) || "",
     },
   });
   console.log("Appointment FORM ERRORS", form.formState.errors);
 
-  // 2. Define a submit handler.
+  //   submit handler.
   async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
-    console.log("hello");
     setIsLoading(true);
 
     let status: Status;
@@ -70,7 +76,6 @@ export function AppointmentForm({
     }
 
     try {
-      console.log(customerId);
       if (type === "create" && customerId) {
         const appointmentData = {
           userId,
@@ -81,7 +86,6 @@ export function AppointmentForm({
           note: values.note,
           status,
         };
-        console.log(appointmentData);
 
         const res = await fetch(
           "/api/actions/appointmentactions/create-appointment",
@@ -103,6 +107,33 @@ export function AppointmentForm({
           router.push(
             `/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`
           );
+        }
+      } else {
+        const appointmentToUpdate = {
+          userId,
+          appointmentId: appointment?.$id,
+          appointment: {
+            primaryAgent: values?.primaryAgent,
+            schedule: new Date(values?.schedule),
+            status: status,
+            cancellationReason: values?.cancellationReason,
+          },
+          type,
+        };
+
+        const res = await fetch(
+          "/api/actions/appointmentactions/update-appointment",
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(appointmentToUpdate),
+          }
+        );
+        const updatedAppointment = await res.json();
+        if (updatedAppointment) {
+          setOpen && setOpen(false);
+          form.reset();
+          router.refresh();
         }
       }
     } catch (error) {
@@ -130,12 +161,14 @@ export function AppointmentForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-        <section className="mb-12 space-y-4">
-          <h1 className="header">New Appointment 👋</h1>
-          <p className="text-dark-700">
-            Request a new appointment in 10 seconds
-          </p>
-        </section>
+        {type === "create" && (
+          <section className="mb-12 space-y-4">
+            <h1 className="header">New Appointment 👋</h1>
+            <p className="text-dark-700">
+              Request a new appointment in 10 seconds
+            </p>
+          </section>
+        )}
 
         {type !== "cancel" && (
           <>
@@ -165,8 +198,8 @@ export function AppointmentForm({
               control={form.control}
               fieldType={FormFieldType.DATE_PICKER}
               name="schedule"
-              label="Date of Birth"
-              placeholder="Expected appointment date"
+              label="Expected appointment date"
+              placeholder=" date"
               showTimeSelect
               dateFormat="MM/dd/yyyy - h:mm aa"
             />
