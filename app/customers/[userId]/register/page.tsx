@@ -17,16 +17,17 @@ const Register = async ({ params }: RegisterPageProps) => {
     }
   );
   const user = await res.json();
-  console.log(user);
 
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container ">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
-          <h1 className="text-36-bold mb-12 text-center">
-            <span className="text-purple-500">Appoint</span>
-            Bit
-          </h1>
+          <Link href={"/"}>
+            <h1 className="text-36-bold mb-12 text-center">
+              <span className="text-purple-500">Appoint</span>
+              Bit
+            </h1>
+          </Link>
           <RegisterForm user={user} />
           <p className="copyright py-12 ">© 2025 AppointBit</p>
         </div>
@@ -35,7 +36,7 @@ const Register = async ({ params }: RegisterPageProps) => {
         src="/assets/images/register-img.png"
         height={1000}
         width={1000}
-        alt="patient"
+        alt="agent"
         className="side-img max-w-[390px]"
       />
     </div>

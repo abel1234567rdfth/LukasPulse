@@ -14,9 +14,9 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "appointBit",
   description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+    "An appointment management System designed to streamline  registration, appointment scheduling, and  records management for service providers.",
   icons: {
-    icon: "/assets/icons/logo-icon.svg",
+    icon: "AppointBit",
   },
 };
 

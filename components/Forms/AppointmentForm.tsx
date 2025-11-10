@@ -30,8 +30,8 @@ export function AppointmentForm({
   userId: string;
   customerId: string;
   type: "create" | "cancel" | "schedule";
-  appointment: Appointment;
-  setOpen: (open: boolean) => void;
+  appointment?: Appointment;
+  setOpen?: (open: boolean) => void;
 }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -104,7 +104,7 @@ export function AppointmentForm({
         if (appointment) {
           form.reset();
           router.push(
-            `/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`
+            `/customers/${userId}/new-appointment/success?appointmentId=${appointment.$id}`
           );
         }
       } else {

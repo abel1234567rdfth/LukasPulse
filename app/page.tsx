@@ -39,7 +39,7 @@ export default async function Home(params: adminvalueprop) {
         src="/assets/images/onboarding-img.jpg"
         height={1000}
         width={1000}
-        alt="patient"
+        alt="agents"
         className="side-img max-w-[50%]"
       />
     </div>

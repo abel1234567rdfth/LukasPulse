@@ -47,7 +47,7 @@ export const CustomerFormValidation = z.object({
     message: "You must consent to disclosure to proceed",
   }),
   appointmentConsent: z.boolean().refine((v) => v, {
-    message: "You must consent to disclosure to proceed",
+    message: "You must consent to appointment to proceed",
   }),
   privacyConsent: z.boolean().refine((v) => v, {
     message: "You must consent to privacy to proceed",
@@ -55,7 +55,7 @@ export const CustomerFormValidation = z.object({
 });
 
 export const CreateAppointmentSchema = z.object({
-  primaryAgent: z.string().min(2, "Select at least one doctor"),
+  primaryAgent: z.string().min(2, "Select at least one agent"),
   schedule: z.coerce.date(),
   reason: z
     .string()
@@ -66,7 +66,7 @@ export const CreateAppointmentSchema = z.object({
 });
 
 export const ScheduleAppointmentSchema = z.object({
-  primaryAgent: z.string().min(2, "Select at least one doctor"),
+  primaryAgent: z.string().min(2, "Select at least one agent"),
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
@@ -74,7 +74,7 @@ export const ScheduleAppointmentSchema = z.object({
 });
 
 export const CancelAppointmentSchema = z.object({
-  primaryAgent: z.string().min(2, "Select at least one doctor"),
+  primaryAgent: z.string().min(2, "Select at least one agent"),
   schedule: z.coerce.date(),
   reason: z.string().optional(),
   note: z.string().optional(),
