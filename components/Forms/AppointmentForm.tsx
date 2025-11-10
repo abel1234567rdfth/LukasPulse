@@ -13,7 +13,7 @@ import {
   UserFormValidation,
 } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { FormFieldType } from "./PatientForm";
+import { FormFieldType } from "./AuthForm";
 import Image from "next/image";
 import { Agents } from "@/constants";
 import { SelectItem } from "../ui/select";
@@ -56,7 +56,6 @@ export function AppointmentForm({
       cancellationReason: (appointment && appointment.cancellationReason) || "",
     },
   });
-  console.log("Appointment FORM ERRORS", form.formState.errors);
 
   //   submit handler.
   async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {

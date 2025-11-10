@@ -40,7 +40,7 @@ const FileUploader = ({ files, onchange }: FileUploaderProps) => {
           ) : (
             <div className="file-upload_label">
               <p className="text-14-regular">
-                <span className="text-green-500">Click to Upload</span> or drag
+                <span className="text-purple-500">Click to Upload</span> or drag
                 and drop
               </p>
             </div>

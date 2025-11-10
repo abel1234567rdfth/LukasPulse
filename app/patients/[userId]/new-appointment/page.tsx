@@ -1,5 +1,5 @@
 import { AppointmentForm } from "@/components/Forms/AppointmentForm";
-import PatientForm from "@/components/Forms/PatientForm";
+import PatientForm from "@/components/Forms/AuthForm";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -22,23 +22,20 @@ export default async function NewAppointment({ params }: RegisterPageProps) {
   const customer = data.documents[0];
 
   return (
-    <div className="flex h-screen max-h-screen">
+    <div className="flex    max-h-screen">
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[860px] flex-1 justify-between">
-          <Image
-            src={"/assets/icons/logo-full.svg"}
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
+          <h1 className="text-36-bold mb-12 text-center">
+            <span className="text-purple-500">Appoint</span>
+            Bit
+          </h1>
           <AppointmentForm
             type="create"
             userId={userId}
             customerId={customer.$id}
           />
 
-          <p className="copyright mt-10 py-12">© 2025 LukasPulse</p>
+          <p className="copyright mt-10 py-12">© 2025 AppointBit</p>
         </div>
       </section>
       <Image
@@ -46,7 +43,7 @@ export default async function NewAppointment({ params }: RegisterPageProps) {
         height={1000}
         width={1000}
         alt="appointment"
-        className="side-img max-w-[390px] bg-bottom"
+        className="side-img  max-w-[390px]   bg-bottom"
       />
     </div>
   );

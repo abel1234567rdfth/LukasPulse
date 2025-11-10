@@ -37,48 +37,46 @@ export const IdentificationTypes = [
   "Military ID Card",
   "National Identity Card",
   "Passport",
-  "Resident Alien Card (Green Card)",
-  "Social Security Card",
-  "State ID Card",
+  "ID Card",
   "Student ID Card",
   "Voter ID Card",
 ];
 
 export const Agents = [
   {
-    image: "/assets/images/dr-green.png",
+    image: "/assets/images/green.png",
     name: "John Green",
   },
   {
-    image: "/assets/images/dr-cameron.png",
+    image: "/assets/images/cameron.png",
     name: "Leila Cameron",
   },
   {
-    image: "/assets/images/dr-livingston.png",
+    image: "/assets/images/livingston.png",
     name: "David Livingston",
   },
   {
-    image: "/assets/images/dr-peter.png",
+    image: "/assets/images/peter.png",
     name: "Evan Peter",
   },
   {
-    image: "/assets/images/dr-powell.png",
+    image: "/assets/images/powell.png",
     name: "Jane Powell",
   },
   {
-    image: "/assets/images/dr-remirez.png",
+    image: "/assets/images/remirez.png",
     name: "Alex Ramirez",
   },
   {
-    image: "/assets/images/dr-lee.png",
+    image: "/assets/images/lee.png",
     name: "Jasmine Lee",
   },
   {
-    image: "/assets/images/dr-cruz.png",
+    image: "/assets/images/cruz.png",
     name: "Alyana Cruz",
   },
   {
-    image: "/assets/images/dr-sharma.png",
+    image: "/assets/images/sharma.png",
     name: "Hardik Sharma",
   },
 ];

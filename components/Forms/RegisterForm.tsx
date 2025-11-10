@@ -9,7 +9,7 @@ import SubmitButton from "../ui/SubmitButton";
 import { useState } from "react";
 import { CustomerFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
-import { FormFieldType } from "./PatientForm";
+import { FormFieldType } from "./AuthForm";
 
 import {
   Agents,
@@ -39,7 +39,6 @@ export function RegisterForm({ user }: { user: User }) {
       phone: "",
     },
   });
-  console.log("FORM ERRORS", form.formState.errors);
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof CustomerFormValidation>) {
@@ -317,7 +316,6 @@ export function RegisterForm({ user }: { user: User }) {
             <FormControl>
               <FileUploader
                 onchange={(files) => {
-                  console.log("FileUploader changed:", files);
                   field.onChange(files);
                 }}
                 files={field.value}

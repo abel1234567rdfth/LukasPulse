@@ -20,11 +20,11 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
-export function RegisterForm() {
+export function AuthForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
+  //  Define your form.
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
     defaultValues: {
@@ -34,7 +34,7 @@ export function RegisterForm() {
     },
   });
 
-  // 2. Define a submit handler.
+  //  Define a submit handler.
   async function onSubmit({
     name,
     email,
@@ -46,7 +46,7 @@ export function RegisterForm() {
       const res = await fetch("/api/actions/customeractions/create-user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, phone }),
       });
       const user = await res.json();
 
@@ -63,7 +63,7 @@ export function RegisterForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
         <section className="mb-12 space-y-4">
-          <h1 className="header">Hi there 👋</h1>
+          <h1 className="header">Hello there 👋</h1>
           <p className="text-dark-700">Schedule Your First appointement</p>
         </section>
         <CustomFormField
@@ -99,4 +99,4 @@ export function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default AuthForm;

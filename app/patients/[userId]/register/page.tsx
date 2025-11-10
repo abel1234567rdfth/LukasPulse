@@ -13,7 +13,7 @@ const Register = async ({ params }: RegisterPageProps) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/actions/customeractions/get-user?userId=${userId}`,
     {
-      cache: "no-store", // ensures fresh data
+      cache: "no-store",
     }
   );
   const user = await res.json();
@@ -21,19 +21,14 @@ const Register = async ({ params }: RegisterPageProps) => {
 
   return (
     <div className="flex h-screen max-h-screen">
-      {/* TODO:OTP Verification | PassKeyModal */}
-
       <section className="remove-scrollbar container ">
         <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
-          <Image
-            src={"/assets/icons/logo-full.svg"}
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-12 h-10 w-fit"
-          />
+          <h1 className="text-36-bold mb-12 text-center">
+            <span className="text-purple-500">Appoint</span>
+            Bit
+          </h1>
           <RegisterForm user={user} />
-          <p className="copyright py-12 ">© 2025 LukasPulse</p>
+          <p className="copyright py-12 ">© 2025 AppointBit</p>
         </div>
       </section>
       <Image

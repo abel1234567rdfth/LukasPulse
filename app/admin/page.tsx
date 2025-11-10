@@ -10,19 +10,15 @@ const Admin = async () => {
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/actions/appointmentactions/get-appointmentList`
   );
   const appointments = await res.json();
-  console.log(appointments.documents[0]);
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14 ">
       <header className="admin-header">
         <Link href={"/"}>
-          <Image
-            src={"/assets/icons/logo-full.svg"}
-            height={32}
-            width={162}
-            alt="logo"
-            className="h-8 w-fit"
-          />
+          <h1 className="text-36-bold mb-2 text-center">
+            <span className="text-purple-500">Appoint</span>
+            Bit
+          </h1>
         </Link>
         <p className="text-16-semibold">Admin Dashboard</p>
       </header>
