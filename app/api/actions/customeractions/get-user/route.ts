@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { users } from "@/lib/appwrite.config";
-import { , NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   try {
