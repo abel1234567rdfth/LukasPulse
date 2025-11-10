@@ -78,7 +78,7 @@ export function RegisterForm({ user }: { user: User }) {
       const customer = await res.json();
 
       if (customer) {
-        router.push(`/patients/${user.$id}/new-appointment`);
+        router.push(`/customers/${user.$id}/new-appointment`);
       }
     } catch (error) {
       console.log(error);

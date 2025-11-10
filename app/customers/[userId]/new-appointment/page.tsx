@@ -1,7 +1,5 @@
 import { AppointmentForm } from "@/components/Forms/AppointmentForm";
-import PatientForm from "@/components/Forms/AuthForm";
-import { ModeToggle } from "@/components/mode-toggle";
-import { Button } from "@/components/ui/button";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,10 +23,12 @@ export default async function NewAppointment({ params }: RegisterPageProps) {
     <div className="flex    max-h-screen">
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[860px] flex-1 justify-between">
-          <h1 className="text-36-bold mb-12 text-center">
-            <span className="text-purple-500">Appoint</span>
-            Bit
-          </h1>
+          <Link href={"/"}>
+            <h1 className="text-36-bold mb-12 text-center">
+              <span className="text-purple-500">Appoint</span>
+              Bit
+            </h1>
+          </Link>
           <AppointmentForm
             type="create"
             userId={userId}

@@ -51,7 +51,7 @@ export function AuthForm() {
       const user = await res.json();
 
       if (user) {
-        router.push(`/patients/${user.$id}/register`);
+        router.push(`/customers/${user.$id}/register`);
       }
     } catch (error) {
       console.log(error);
