@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { databases, messaging, PRIVATE } from "@/lib/appwrite.config";
 import { formatDateTime } from "@/lib/utils";
 import { error } from "console";

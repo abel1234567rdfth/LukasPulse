@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { databases, PRIVATE } from "@/lib/appwrite.config";
 import { NextRequest, NextResponse } from "next/server";
 import { ID } from "node-appwrite";

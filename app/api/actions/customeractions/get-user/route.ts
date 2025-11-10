@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { users } from "@/lib/appwrite.config";
 import { NextRequest, NextResponse } from "next/server";
 
