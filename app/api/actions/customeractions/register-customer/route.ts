@@ -1,11 +1,11 @@
 export const dynamic = "force-dynamic";
 
 import { databases, PUBLIC, PRIVATE, storage } from "@/lib/appwrite.config";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { ID } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     // Parse multipart/form-data
     const formData = await req.formData();

@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic";
 
 import { databases, PRIVATE } from "@/lib/appwrite.config";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { Query } from "node-appwrite";
 
-export async function GET(req: NextRequest) {
+export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");

@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic";
 
 import { databases, PRIVATE } from "@/lib/appwrite.config";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { ID } from "node-appwrite";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
     const appointmentData = body;

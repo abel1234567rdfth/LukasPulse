@@ -4,10 +4,10 @@ import { databases, messaging, PRIVATE } from "@/lib/appwrite.config";
 import { formatDateTime } from "@/lib/utils";
 import { error } from "console";
 import { revalidatePath } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { ID } from "node-appwrite";
 
-export async function PUT(req: NextRequest) {
+export async function PUT(req: Request) {
   try {
     const body = await req.json();
     const appointmentToUpdate = body;
